@@ -1,0 +1,6 @@
+mne
+numpy
+pandas
+matplotlib
+seaborn
+jupyter
