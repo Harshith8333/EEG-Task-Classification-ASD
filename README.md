@@ -9,13 +9,15 @@ This repository contains the full pipeline for an EEG-based research project foc
 ```
 EEG_Research_Project/
 ├── figures/              # Visual outputs (e.g., PSD plots, scalp maps)
-├── ml_models/            # Machine learning and neural network models
-│   ├── 01_asd_vs_td_classification.ipynb
-│   └── 02_asd_vs_td_task_agnostic_model.ipynb  # (To be added)
+ml_models/
+├── 01_asd_vs_td_classification.ipynb
+├── 01_asd_vs_td_classification.py
+├── 02_asd_vs_td_task_agnostic_model.ipynb
+└── 02_asd_vs_td_task_agnostic_model.py
 ├── preprocessing/        # EEG preprocessing notebooks
-│   └── ATM3_clean_final.ipynb
+│   └── eeg_preprocessing_pipeline.ipynb
 ├── scripts/              # Python scripts for preprocessing and feature extraction
-│   └── eeg_preprocessing_and_features.py
+│   └── eeg_preprocessing_pipeline.py
 ├── tables/               # CSVs with extracted features and results
 ├── README.md             # Project overview and structure
 ├── requirements.txt      # Dependencies
