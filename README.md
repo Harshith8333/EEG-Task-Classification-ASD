@@ -73,15 +73,17 @@ The EEG preprocessing pipeline involves the following steps:
    - Applied across all classifiers (SVM, KNN, RF) to measure accuracy drop when features were shuffled
 
 7. **Visualizations**:
-   - ✅ Bar plot of the **top 2 most important EEG features** (from permutation importance)
-   - ✅ Bar plot of the **least 2 important EEG features** (from permutation importance)
+   -  Bar plot of the **top 2 most important EEG features** (from permutation importance)
+   -  Bar plot of the **least 2 important EEG features** (from permutation importance)
 
 
 8. **Evaluation Metrics**:
    - Accuracy, Precision, Recall, and F1-score using `classification_report`
    - Compared across all models to select the best-performing classifier
 
-Notebook: [`01_asd_vs_td_classification.ipynb`](ml_models/01_asd_vs_td_classification.ipynb)
+Notebooks:
+- [`01_asd_vs_td_classification.ipynb`](ml_models/01_asd_vs_td_classification.ipynb) – Classifies ASD vs TD using EEG data
+- [`02_asd_vs_td_task_agnostic_model.ipynb`](ml_models/02_asd_vs_td_task_agnostic_model.ipynb) – Predicts ASD vs TD using task-agnostic EEG input
 
 ---
 
