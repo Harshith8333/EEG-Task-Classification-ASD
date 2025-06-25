@@ -1,6 +1,6 @@
 # 🧠 EEG Research Project: Cognitive Task Classification in ASD
 
-This repository contains the full pipeline for an EEG-based research project focused on **power spectral analysis** and **machine learning classification** to distinguish cognitive tasks and ASD profiles.
+This repository contains the full pipeline for an EEG-based research project focused on **power spectral analysis**, **machine learning**, and **neural network classification** to distinguish cognitive tasks and ASD profiles.
 
 ---
 
@@ -9,7 +9,9 @@ This repository contains the full pipeline for an EEG-based research project foc
 ```
 EEG_Research_Project/
 ├── figures/              # Visual outputs (e.g., PSD plots, scalp maps)
-├── ml_models/            # Placeholder for ML/NN models (to be added)
+├── ml_models/            # Machine learning and neural network models
+│   ├── 01_asd_vs_td_classification.ipynb
+│   └── 02_asd_vs_td_task_agnostic_model.ipynb  # (To be added)
 ├── preprocessing/        # EEG preprocessing notebooks
 │   └── ATM3_clean_final.ipynb
 ├── scripts/              # Python scripts for preprocessing and feature extraction
@@ -28,9 +30,10 @@ EEG_Research_Project/
 This project involves:
 - Preprocessing EEG data collected via MUSE headset.
 - Extracting power spectral features (Delta, Theta, Alpha, Beta, Gamma) using **Welch’s method**.
-- Future steps include training ML & Neural Network models to:
-  - Classify participants (ASD vs TD)
-  - Predict cognitive tasks (Block Matching, Sorting, Number Matching)
+- Includes machine learning models (SVM, KNN, RF, and Ensemble) for:
+  - Classifying participants (ASD vs TD) using task-specific features
+  - Predicting ASD vs TD using task-agnostic EEG input (data from any task)
+- Neural network models are under development for both use cases above.
 
 ---
 
@@ -47,6 +50,41 @@ The EEG preprocessing pipeline involves the following steps:
 
 ---
 
+## 🤖 Machine Learning Pipeline (ASD vs TD Classification)
+
+1. **Data Loading** – Features loaded from preprocessed EEG tables
+2. **Train-Test Split** – Stratified sampling with validation
+3. **Feature Scaling** – Using `StandardScaler`
+
+4. **Modeling Techniques**:
+   - Support Vector Machine (SVM)
+   - K-Nearest Neighbors (KNN)
+   - Random Forest (RF)
+   - VotingClassifier Ensemble (SVM + RF + KNN)
+
+5. **Hyperparameter Tuning**:
+   - KNN: Optimal `k` selected through manual accuracy comparison
+   - SVM: Tuned kernel (`linear`, `rbf`) and regularization parameter `C`
+   - Random Forest: Tuned `n_estimators`, `max_depth`, and `criterion`
+   - Ensemble: Implemented **soft voting** using the best-performing base classifiers
+
+6. **Best Feature Identification**:
+   - Feature importances were calculated using **permutation importance**
+   - Applied across all classifiers (SVM, KNN, RF) to measure accuracy drop when features were shuffled
+
+7. **Visualizations**:
+   - ✅ Bar plot of the **top 2 most important EEG features** (from permutation importance)
+   - ✅ Bar plot of the **least 2 important EEG features** (from permutation importance)
+
+
+8. **Evaluation Metrics**:
+   - Accuracy, Precision, Recall, and F1-score using `classification_report`
+   - Compared across all models to select the best-performing classifier
+
+Notebook: [`01_asd_vs_td_classification.ipynb`](ml_models/01_asd_vs_td_classification.ipynb)
+
+---
+
 ## 🛠️ Requirements
 
 Install dependencies:
@@ -58,9 +96,11 @@ pip install -r requirements.txt
 
 ## 🚀 Future Work
 
-- Implement and upload machine learning (SVM, KNN, RF) and ensemble models
-- Develop neural network models for multi-class classification
-- Add performance dashboards (accuracy, confusion matrix, ROC curves)
+- Add two neural network models:
+  1. **NN Model 1**: ASD vs TD classification using task-specific EEG features
+  2. **NN Model 2**: ASD vs TD classification using EEG data from any task (task-agnostic binary model)
+- Expand hyperparameter optimization and model comparison
+- Visualize time-frequency features and statistical comparisons
 
 ---
 
