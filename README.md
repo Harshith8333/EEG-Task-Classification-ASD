@@ -1,120 +1,125 @@
-# 🧠 EEG Research Project: Cognitive Task Classification in ASD
+# 🧠 EEG-Based ASD Classification Using Machine Learning and Neural Networks
 
-This repository contains the full pipeline for an EEG-based research project focused on **power spectral analysis**, **machine learning**, and **neural network classification** to distinguish cognitive tasks and ASD profiles.
+This project focuses on analyzing brainwave activity in children with Autism Spectrum Disorder (ASD) during cognitive tasks. We built a complete pipeline—from preprocessing EEG data to training machine learning and neural network models—that classifies whether a child is ASD or typically developing (TD).
 
 ---
 
-## 📂 Folder Structure
+## 📁 Project Structure
 
 ```
 EEG_Research_Project/
-
-bash
-Copy
-Edit
-EEG_Research_Project/
-├── Scripts/                              # Python scripts for preprocessing
-│   └── eeg_preprocessing_pipeline.py
-│
-├── ml_models/                            # Traditional ML models (SVM, KNN, RF, Ensemble)
-│   ├── 01_asd_vs_td_classification.ipynb
-│   ├── 01_asd_vs_td_classification.py
-│   ├── 02_asd_vs_td_task_agnostic_model.ipynb
-│   └── 02_asd_vs_td_task_agnostic_model.py
-│
-├── nn_models/                            # Neural Network versions of the same models
-│   ├── 01_asd_vs_td_classification.ipynb
-│   ├── 01_asd_vs_td_classification.py
-│   ├── 02_asd_vs_td_task_agnostic_model.ipynb
-│   └── 02_asd_vs_td_task_agnostic_model.py
-│
-├── preprocessing/                        # EEG data cleaning and noise removal
-│   └── eeg_preprocessing_pipeline.ipynb
-├── tables/               # CSVs with extracted features and results
-├── README.md             # Project overview and structure
-├── requirements.txt      # Dependencies
-├── LICENSE               # Usage license
-└── .gitignore            # Git exclusions
+├── figures/              # Visual outputs (e.g., power plots, brain maps)
+├── ml_models/            # Traditional ML models (SVM, KNN, RF, Ensemble)
+├── nn_models/            # Neural network models
+├── preprocessing/        # EEG data cleaning and PSD computation
+├── scripts/              # Preprocessing utilities
+├── tables/               # Extracted features in CSV format
+├── README.md             # Project overview
+├── requirements.txt      # Environment setup
+├── LICENSE
+└── .gitignore
 ```
 
 ---
 
-## 🎯 Project Summary
+## 🎯 What This Project Does
 
-This project involves:
-- Preprocessing EEG data collected via MUSE headset.
-- Extracting power spectral features (Delta, Theta, Alpha, Beta, Gamma) using **Welch’s method**.
-- Includes machine learning models (SVM, KNN, RF, and Ensemble) for:
-  - Classifying participants (ASD vs TD) using task-specific features
-  - Predicting ASD vs TD using task-agnostic EEG input (data from any task)
-- Neural network models are under development for both use cases above.
+This study explores how EEG signals can be used to detect ASD in children, especially during academic tasks like Block Matching, Block Sorting, and Number Matching. We extracted frequency-based features using the Welch method, trained multiple models, and compared their performance.
 
 ---
 
-## 🔬 EEG Preprocessing Pipeline
+## 🧒 Data and Tasks
 
-The EEG preprocessing pipeline involves the following steps:
-
-1. **Raw EEG Loading** – Read multiple CSV files containing `RAW_` EEG columns
-2. **NaN and Inf Handling** – Use forward-fill, backward-fill, and mean replacement for missing data
-3. **Conversion to MNE Format** – Create `RawArray` using MNE with 256 Hz sampling
-4. **Artifact Handling via ICA** – Use Independent Component Analysis to detect and remove muscle artifacts using high-frequency PSD checks
-5. **Power Spectral Density Calculation** – Apply Welch’s method to compute absolute band power across Delta, Theta, Alpha, Beta, and Gamma bands
-6. **Export to CSV** – Save averaged power features per file for downstream ML/NN use
+- EEG data was collected from children aged 4–15 using the MUSE headband.
+- Electrodes used: AF7, AF8, TP9, TP10
+- Sample rate: 256 Hz
+- Tasks performed:
+  - Block Matching (BM)
+  - Block Sorting (BS)
+  - Number Matching (NM)
 
 ---
 
-## 🤖 Machine Learning Pipeline (ASD vs TD Classification)
+## ⚙️ EEG Preprocessing Steps
 
-1. **Data Loading** – Features loaded from preprocessed EEG tables
-2. **Train-Test Split** – Stratified sampling with validation
-3. **Feature Scaling** – Using `StandardScaler`
+1. **Import CSV EEG Data** with `RAW_` columns
+2. **Clean Missing Values** using forward/backward fill and mean
+3. **Convert to MNE Format** at 256 Hz
+4. **Apply ICA** to remove noise and muscle artifacts
+5. **Compute Band Power** (Delta, Theta, Alpha, Beta, Gamma) via Welch’s method
+6. **Save Clean Features** to CSV for modeling
 
-4. **Modeling Techniques**:
-   - Support Vector Machine (SVM)
-   - K-Nearest Neighbors (KNN)
-   - Random Forest (RF)
-   - VotingClassifier Ensemble (SVM + RF + KNN)
+---
 
-5. **Hyperparameter Tuning**:
-   - KNN: Optimal `k` selected through manual accuracy comparison
-   - SVM: Tuned kernel (`linear`, `rbf`) and regularization parameter `C`
-   - Random Forest: Tuned `n_estimators`, `max_depth`, and `criterion`
-   - Ensemble: Implemented **soft voting** using the best-performing base classifiers
+## 🤖 Machine Learning Models
 
-6. **Best Feature Identification**:
-   - Feature importances were calculated using **permutation importance**
-   - Applied across all classifiers (SVM, KNN, RF) to measure accuracy drop when features were shuffled
+We trained and tuned the following classifiers:
 
-7. **Visualizations**:
-   -  Bar plot of the **top 2 most important EEG features** (from permutation importance)
-   -  Bar plot of the **least 2 important EEG features** (from permutation importance)
+- **Support Vector Machine (SVM)**
+- **K-Nearest Neighbors (KNN)**
+- **Random Forest (RF)**
+- **Soft Voting Ensemble** (SVM + KNN + RF)
 
+### Feature Importance:
+- We used **permutation importance** across all models to find key EEG features.
+- Plotted:
+  - Top 2 most influential features
+  - Least impactful features
 
-8. **Evaluation Metrics**:
-   - Accuracy, Precision, Recall, and F1-score using `classification_report`
-   - Compared across all models to select the best-performing classifier
+### Evaluation Metrics:
+- Accuracy
+- Precision
+- Recall
+- F1-Score
 
-## 🧠 Neural Network Pipeline (ASD vs TD Classification)
+---
 
-The project also includes equivalent deep learning models using **Keras** for the same two classification tasks.
+## 🧠 Neural Network Models
 
-### ✅ 1. `01_asd_vs_td_classification.ipynb`
-- A basic fully connected feedforward Neural Network trained on power spectral EEG features.
-- Architecture:
-  - Dense(128, ReLU)
-  - Dropout(0.3)
-  - Dense(64, ReLU)
-  - Output: Dense with `softmax` activation (3-class)
+Two NN models were developed using TensorFlow/Keras:
 
-- Trained using categorical crossentropy and Adam optimizer.
-- Includes evaluation using test accuracy and validation accuracy curves.
+1. **Model 1** – Classifies ASD vs TD using EEG data from specific tasks
+2. **Model 2** – Classifies ASD vs TD using EEG data regardless of the task (task-agnostic)
 
-### ✅ 2. `02_asd_vs_td_task_agnostic_model.ipynb`
-- Identical architecture, trained using task-agnostic EEG features.
-- Designed to classify ASD vs TD using EEG from any task, not just task-specific data.
+Each model is structured using fully connected layers with training curves and performance summaries.
+
+---
+
+## 📓 Notebooks and Scripts
+
+```
+ml_models/
+├── 01_asd_vs_td_classification.ipynb — ML Model 1
+├── 01_asd_vs_td_classification.py
+├── 02_asd_vs_td_task_agnostic_model.ipynb — ML Model 2
+└── 02_asd_vs_td_task_agnostic_model.py
+
+nn_models/
+├── 01_asd_vs_td_classification.ipynb — NN Model 1
+├── 01_asd_vs_td_classification.py
+├── 02_asd_vs_td_task_agnostic_model.ipynb — NN Model 2
+└── 02_asd_vs_td_task_agnostic_model.py
+```
+
+---
+
+## 🛠 How to Set Up
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔍 Key Findings
+
+- Frontal brain regions (AF7, AF8) were highly important in differentiating ASD vs TD.
+- Traditional ML models (especially ensemble) achieved ~92% accuracy.
+- Neural networks showed consistent performance across tasks (~83%).
+
+---
 
 ## 🔗 References
 
 - [MNE-Python Documentation](https://mne.tools/stable/index.html)
-- [Welch’s Method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.welch.html)
+- [Welch’s Method (SciPy)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.welch.html)
