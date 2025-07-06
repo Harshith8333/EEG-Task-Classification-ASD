@@ -8,16 +8,28 @@ This repository contains the full pipeline for an EEG-based research project foc
 
 ```
 EEG_Research_Project/
-├── figures/              # Visual outputs (e.g., PSD plots, scalp maps)
-ml_models/
-├── 01_asd_vs_td_classification.ipynb
-├── 01_asd_vs_td_classification.py
-├── 02_asd_vs_td_task_agnostic_model.ipynb
-└── 02_asd_vs_td_task_agnostic_model.py
-├── preprocessing/        # EEG preprocessing notebooks
-│   └── eeg_preprocessing_pipeline.ipynb
-├── scripts/              # Python scripts for preprocessing and feature extraction
+
+bash
+Copy
+Edit
+EEG_Research_Project/
+├── Scripts/                              # Python scripts for preprocessing
 │   └── eeg_preprocessing_pipeline.py
+│
+├── ml_models/                            # Traditional ML models (SVM, KNN, RF, Ensemble)
+│   ├── 01_asd_vs_td_classification.ipynb
+│   ├── 01_asd_vs_td_classification.py
+│   ├── 02_asd_vs_td_task_agnostic_model.ipynb
+│   └── 02_asd_vs_td_task_agnostic_model.py
+│
+├── nn_models/                            # Neural Network versions of the same models
+│   ├── 01_asd_vs_td_classification.ipynb
+│   ├── 01_asd_vs_td_classification.py
+│   ├── 02_asd_vs_td_task_agnostic_model.ipynb
+│   └── 02_asd_vs_td_task_agnostic_model.py
+│
+├── preprocessing/                        # EEG data cleaning and noise removal
+│   └── eeg_preprocessing_pipeline.ipynb
 ├── tables/               # CSVs with extracted features and results
 ├── README.md             # Project overview and structure
 ├── requirements.txt      # Dependencies
