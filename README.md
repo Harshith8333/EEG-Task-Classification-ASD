@@ -1,6 +1,6 @@
 # 🧠 EEG-Based ASD Classification Using Machine Learning and Neural Networks
 
-This project focuses on analyzing brainwave activity in children with Autism Spectrum Disorder (ASD) during cognitive tasks. We built a complete pipeline—from preprocessing EEG data to training machine learning and neural network models—that classifies whether a child is ASD or typically developing (TD).
+This project focuses on analyzing brainwave activity in children with Autism Spectrum Disorder (ASD) during cognitive tasks. We built a complete pipeline from preprocessing EEG data to training machine learning and neural network models that classifies whether a child is ASD or typically developing (TD).
 
 ---
 
@@ -24,7 +24,7 @@ EEG_Research_Project/
 
 ## 🎯 What This Project Does
 
-This study explores how EEG signals can be used to detect ASD in children, especially during academic tasks like Block Matching, Block Sorting, and Number Matching. We extracted frequency-based features using the Welch method, trained multiple models, and compared their performance.
+This study explores how EEG signals can be used to detect ASD in children, especially during academic tasks like Block Matching, Block Sorting, and Number Matching. We extracted frequency based features using the Welch method, trained multiple models, and compared their performance.
 
 ---
 
@@ -42,7 +42,7 @@ This study explores how EEG signals can be used to detect ASD in children, espec
 
 ## ⚙️ EEG Preprocessing Steps
 
-1. **Import CSV EEG Data** with `RAW_` columns
+1. **Import CSV EEG Data** with `RAW` columns
 2. **Clean Missing Values** using forward/backward fill and mean
 3. **Convert to MNE Format** at 256 Hz
 4. **Apply ICA** to remove noise and muscle artifacts
