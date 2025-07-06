@@ -114,25 +114,6 @@ The project also includes equivalent deep learning models using **Keras** for th
 - Identical architecture, trained using task-agnostic EEG features.
 - Designed to classify ASD vs TD using EEG from any task, not just task-specific data.
 
-## 🛠️ Requirements
-
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## 🚀 Future Work
-
-- Add two neural network models:
-  1. **NN Model 1**: ASD vs TD classification using task-specific EEG features
-  2. **NN Model 2**: ASD vs TD classification using EEG data from any task (task-agnostic binary model)
-- Expand hyperparameter optimization and model comparison
-- Visualize time-frequency features and statistical comparisons
-
----
-
 ## 🔗 References
 
 - [MNE-Python Documentation](https://mne.tools/stable/index.html)
