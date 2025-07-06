@@ -95,11 +95,24 @@ The EEG preprocessing pipeline involves the following steps:
    - Accuracy, Precision, Recall, and F1-score using `classification_report`
    - Compared across all models to select the best-performing classifier
 
-Notebooks:
-- [`01_asd_vs_td_classification.ipynb`](ml_models/01_asd_vs_td_classification.ipynb) – Classifies ASD vs TD using EEG data
-- [`02_asd_vs_td_task_agnostic_model.ipynb`](ml_models/02_asd_vs_td_task_agnostic_model.ipynb) – Predicts ASD vs TD using task-agnostic EEG input
+## 🧠 Neural Network Pipeline (ASD vs TD Classification)
 
----
+The project also includes equivalent deep learning models using **Keras** for the same two classification tasks.
+
+### ✅ 1. `01_asd_vs_td_classification.ipynb`
+- A basic fully connected feedforward Neural Network trained on power spectral EEG features.
+- Architecture:
+  - Dense(128, ReLU)
+  - Dropout(0.3)
+  - Dense(64, ReLU)
+  - Output: Dense with `softmax` activation (3-class)
+
+- Trained using categorical crossentropy and Adam optimizer.
+- Includes evaluation using test accuracy and validation accuracy curves.
+
+### ✅ 2. `02_asd_vs_td_task_agnostic_model.ipynb`
+- Identical architecture, trained using task-agnostic EEG features.
+- Designed to classify ASD vs TD using EEG from any task, not just task-specific data.
 
 ## 🛠️ Requirements
 
