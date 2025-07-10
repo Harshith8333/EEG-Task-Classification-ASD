@@ -8,10 +8,10 @@ This project focuses on analyzing brainwave activity in children with Autism Spe
 
 ```
 EEG_Research_Project/
+├── scripts/              # Preprocessing utilities
 ├── ml_models/            # Traditional ML models (SVM, KNN, RF, Ensemble)
 ├── nn_models/            # Neural network models
 ├── preprocessing/        # EEG data cleaning and PSD computation
-├── scripts/              # Preprocessing utilities
 ├── docs/                 # Final research paper with embedded figures and tables
 ├── README.md             # Project overview
 ├── requirements.txt      # Environment setup
