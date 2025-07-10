@@ -1,6 +1,6 @@
 # 🧠 EEG-Based ASD Classification Using Machine Learning and Neural Networks
 
-This project focuses on analyzing brainwave activity in children with Autism Spectrum Disorder (ASD) during cognitive tasks. We built a complete pipeline from preprocessing EEG data to training machine learning and neural network models that classifies whether a child is ASD or typically developing (TD).
+This research focuses on analyzing brainwave activity in children with Autism Spectrum Disorder (ASD) during cognitive tasks. We built a complete pipeline from preprocessing EEG data to training machine learning and neural network models that classifies whether a child is ASD or typically developing (TD).
 
 ---
 
