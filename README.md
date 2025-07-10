@@ -48,6 +48,8 @@ This study explores how EEG signals can be used to detect ASD in children, espec
 4. **Apply ICA** to remove noise and muscle artifacts
 5. **Compute Band Power** (Delta, Theta, Alpha, Beta, Gamma) via Welch’s method
 6. **Save Clean Features** to CSV for modeling
+7. **Time–Frequency Analysis (TFA)** – Generated visual spectrograms from raw EEG to explore task-specific changes in power across time and frequency bands. These plots helped interpret brainwave dynamics but were not used directly as ML inputs.
+
 
 ---
 
