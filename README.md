@@ -115,7 +115,7 @@ pip install -r requirements.txt
 ## 🔍 Key Findings
 
 - Frontal brain regions (AF7, AF8) were highly important in differentiating ASD vs TD.
-- Traditional ML models (especially ensemble) achieved ~92% accuracy.
+- Traditional ML models (especially ensemble) achieved ~90% accuracy.
 - Neural networks showed consistent performance across tasks (~83%).
 
 ---
